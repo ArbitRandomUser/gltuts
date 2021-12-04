@@ -1,4 +1,4 @@
-CC = gcc
+CC = clang++ 
 LIBS = -lGL -lglfw -lGLEW
 vertex: vertex.cpp
 	$(CC) $(LIBS)  -o out.o vertex.cpp
