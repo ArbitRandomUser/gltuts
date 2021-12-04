@@ -27,7 +27,9 @@ int main(){
 
   GLuint vao;
   glGenVertexArrays(1, &vao);
-  glBindVertexArray(vao);
+
+  GLuint vao2;
+  glGenVertexArrays(1,&vao2);
 
   GLuint vertexBuffer;
   glGenBuffers(1, &vertexBuffer);
@@ -70,6 +72,7 @@ int main(){
   glAttachShader(shaderProgram,vshader);
   glAttachShader(shaderProgram,fshader);
   //glBindFragDataLocation(shaderProgram, 0, "outColor");
+  glBindVertexArray(vao);
   glLinkProgram(shaderProgram);
   glUseProgram(shaderProgram);
   GLint posAttrib = glGetAttribLocation(shaderProgram,"position");
@@ -89,9 +92,12 @@ int main(){
   while(!glfwWindowShouldClose(window))
   {
     //glDrawArrays(GL_TRIANGLES,2,3);
-    //glDrawArrays(GL_TRIANGLES,0,3);
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);   //glDrawArrays(GL_TRIANGLES,0,3);
+    glDrawArrays(GL_TRIANGLES,0,3);
     glfwPollEvents();
     glfwSwapBuffers(window);
+    //sleep(1);
   }
   glfwTerminate();
 }
